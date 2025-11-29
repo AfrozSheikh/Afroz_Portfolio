@@ -4,12 +4,12 @@ import * as React from 'react';
 import {
   type HistoryItem,
   type Profile,
-  type Skill[],
-  type Project[],
-  type Experience[],
-  type Education[],
-  type Achievement[],
-  type Link[],
+  type Skill,
+  type Project,
+  type Experience,
+  type Education,
+  type Achievement,
+  type Link,
 } from '@/lib/types';
 import {
   HelpMessage,
