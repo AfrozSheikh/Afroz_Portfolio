@@ -25,7 +25,7 @@ const Divider = () => <div className="w-full border-t border-dashed border-borde
 
 export const WelcomeMessage = () => (
   <OutputContainer>
-    <pre className="font-code text-primary text-xs md:text-sm whitespace-pre-wrap">
+    <pre className="font-code text-primary text-[8px] sm:text-xs md:text-sm whitespace-pre-wrap">
       {`
       ██████╗ ███████╗██╗   ██╗     ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ ██╗  ██████╗ ██╗     
       ██╔══██╗██╔════╝╚██╗ ██╔╝     ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║███║ ██╔═══██╗██║     
