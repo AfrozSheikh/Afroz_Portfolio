@@ -32,6 +32,9 @@ export default function Home() {
           />
         )}
       </div>
+      <footer className="py-4 text-center text-sm text-muted-foreground">
+        Made with 💖 by Afroz
+      </footer>
     </main>
   );
 }
