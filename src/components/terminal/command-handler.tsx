@@ -113,12 +113,11 @@ export const handleCommand = ({ command, setHistory, setTheme, setShowChat, onCo
         return <div>{emailLink ? emailLink.url.replace('mailto:', '') : 'Email not found.'}</div>;
     
     case 'repo':
-        window.open('https://github.com/afroz-sh/terminal-portfolio', '_blank');
+        window.open('https://github.com/AfrozSheikh/PortFolio-Season-2', '_blank');
         return <div>Opening GitHub repository...</div>;
         
     case 'resume':
-        // Placeholder for resume link
-        window.open('/resume.pdf', '_blank');
+        window.open('https://drive.google.com/file/d/1PANE1qQ64s4aZiscTEIt9P0ChErb__6K/view?usp=drivesdk', '_blank');
         return <div>Opening resume... (Note: This is a placeholder link)</div>;
 
     case 'theme':

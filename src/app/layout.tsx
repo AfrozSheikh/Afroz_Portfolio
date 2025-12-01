@@ -4,12 +4,12 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Afroz Sheikh – Full-Stack Developer',
-  description: 'The interactive terminal portfolio of Afroz Sheikh, a full-stack web developer specializing in React, Next.js, Node.js, and TypeScript.',
+  description: 'The terminal based portfolio of Afroz Sheikh, a full-stack web developer specializing in React, Next.js, Node.js, and TypeScript.',
   openGraph: {
     title: 'Afroz Sheikh – Full-Stack Developer',
-    description: 'The interactive terminal portfolio of Afroz Sheikh.',
+    description: 'The terminal based portfolio of Afroz Sheikh.',
     type: 'website',
-    url: 'https://afroz-portfolio.dev', // Replace with actual URL
+    url: 'https://afroz-sk-portfolio.vercel.app/', // Replace with actual URL
     images: [
       {
         url: 'https://picsum.photos/seed/og-image/1200/630', // Replace with actual OG image
