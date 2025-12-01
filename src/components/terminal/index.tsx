@@ -47,23 +47,69 @@ const TerminalHeader = ({ setShowChat }: { setShowChat: (show: boolean) => void 
 );
 
 const InputLine = ({ value, onChange, onKeyDown, inputRef, ipAddress }: any) => (
-  <div className="flex text-base w-full items-center bg-input/70 p-2 rounded-md">
-    <span className="text-primary font-bold mr-2 whitespace-nowrap">{ipAddress}@portfolio:~$</span>
-    <input
-      ref={inputRef}
-      type="text"
-      value={value}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-      className="bg-transparent border-none outline-none w-full text-foreground font-code"
-      autoFocus
-      autoComplete="off"
-      autoCapitalize="off"
-      autoCorrect="off"
-      spellCheck="false"
-    />
-    <span className="w-2 h-4 bg-primary caret ml-1"></span>
-  </div>
+
+  <div className="flex w-full items-start sm:items-center bg-input/70 p-2 rounded-md text-sm sm:text-base">
+  <span className="text-primary font-bold mr-2 whitespace-normal sm:whitespace-nowrap break-all">
+    {ipAddress}@portfolio:~$
+  </span>
+
+  <input
+    ref={inputRef}
+    type="text"
+    value={value}
+    onChange={onChange}
+    onKeyDown={onKeyDown}
+    className="bg-transparent border-none outline-none w-full text-foreground font-code"
+    autoFocus
+    autoComplete="off"
+    autoCapitalize="off"
+    autoCorrect="off"
+    spellCheck="false"
+  />
+
+  <span className="w-2 h-4 bg-primary ml-1 hidden sm:block"></span>
+</div>
+
+//   <div className="flex w-full items-start sm:items-center bg-input/70 p-2 rounded-md text-base sm:text-lg">
+//   <span className="text-primary font-bold mr-2 whitespace-normal sm:whitespace-nowrap break-all">
+//     {ipAddress}@portfolio:~$
+//   </span>
+
+//   <div className="flex-1 flex items-center">
+//     <input
+//       ref={inputRef}
+//       type="text"
+//       value={value}
+//       onChange={onChange}
+//       onKeyDown={onKeyDown}
+//       className="bg-transparent border-none outline-none w-full text-foreground font-code"
+//       autoFocus
+//       autoComplete="off"
+//       autoCapitalize="off"
+//       autoCorrect="off"
+//       spellCheck="false"
+//     />
+//     <span className="w-2 h-4 bg-primary caret ml-1 hidden sm:inline-block"></span>
+//   </div>
+// </div>
+
+  // <div className="flex text-base w-full items-center bg-input/70 p-2 rounded-md">
+  //   <span className="text-primary font-bold mr-2 whitespace-nowrap">{ipAddress}@portfolio:~$</span>
+  //   <input
+  //     ref={inputRef}
+  //     type="text"
+  //     value={value}
+  //     onChange={onChange}
+  //     onKeyDown={onKeyDown}
+  //     className="bg-transparent border-none outline-none w-full text-foreground font-code"
+  //     autoFocus
+  //     autoComplete="off"
+  //     autoCapitalize="off"
+  //     autoCorrect="off"
+  //     spellCheck="false"
+  //   />
+  //   <span className="w-2 h-4 bg-primary caret ml-1"></span>
+  // </div>
 );
 
 export default function Terminal({ history, setHistory, setTheme, setShowChat }: TerminalProps) {
