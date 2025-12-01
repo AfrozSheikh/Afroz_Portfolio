@@ -18,27 +18,30 @@ interface TerminalProps {
 }
 
 const TerminalHeader = ({ setShowChat }: { setShowChat: (show: boolean) => void }) => (
-  <div className="flex items-center h-10 px-2 sm:px-3 bg-card/50 backdrop-blur-sm border-b flex-shrink-0">
+  <div className="grid grid-cols-3 items-center h-10 px-2 sm:px-3 bg-card/50 backdrop-blur-sm border-b flex-shrink-0">
     <div className="flex items-center gap-1.5">
       <div className="w-3 h-3 rounded-full bg-red-500"></div>
       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
       <div className="w-3 h-3 rounded-full bg-green-500"></div>
     </div>
-    <div className="flex-grow text-center text-sm font-sans text-muted-foreground">
+    <div className="text-center text-sm font-sans text-muted-foreground truncate">
       <TerminalIcon className="inline-block h-4 w-4 mr-1 -mt-0.5" />
-      <span>afroz@portfolio: ~</span>
+      <span className="hidden sm:inline">afroz@portfolio: ~</span>
     </div>
-    <Button
-      variant="outline"
-      size="sm"
-      onClick={() => setShowChat(true)}
-      className={cn(
-        "h-8 text-xs sm:text-sm bg-background/80 backdrop-blur-sm border-primary/50 text-primary hover:bg-primary/10 hover:text-primary",
-        "ai-chat-button-glow"
-      )}
-    >
-        <MessageSquare className="mr-2 h-4 w-4" /> Assistant
-    </Button>
+    <div className="flex justify-end">
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => setShowChat(true)}
+        className={cn(
+          "h-8 text-xs sm:text-sm bg-background/80 backdrop-blur-sm border-primary/50 text-primary hover:bg-primary/10 hover:text-primary",
+          "ai-chat-button-glow"
+        )}
+      >
+          <MessageSquare className="mr-2 h-4 w-4" />
+          <span className="hidden sm:inline">Assistant</span>
+      </Button>
+    </div>
   </div>
 );
 

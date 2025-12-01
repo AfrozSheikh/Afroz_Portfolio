@@ -145,7 +145,8 @@ export default function ChatPanel({ setShowChat }: { setShowChat: (show: boolean
                 onClick={() => setShowChat(false)}
                 className="bg-background/80 backdrop-blur-sm border-primary/50 text-primary hover:bg-primary/10 hover:text-primary"
             >
-                <TerminalIcon className="mr-2 h-4 w-4" /> Terminal
+                <TerminalIcon className="mr-2 h-4 w-4" />
+                <span className="hidden sm:inline">Terminal</span>
             </Button>
         </div>
       </CardHeader>
