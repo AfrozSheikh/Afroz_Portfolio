@@ -25,7 +25,8 @@ const Divider = () => <div className="w-full border-t border-dashed border-borde
 
 export const WelcomeMessage = () => (
   <OutputContainer>
-    <pre className="font-code text-primary text-xs sm:text-sm whitespace-pre">
+    <div className="overflow-x-auto">
+      <pre className="font-code text-primary text-xs sm:text-sm whitespace-pre">
 {`
           ___         __                     
    /\\    / _ \\ O O O / _|_ __  ___  ___  _ _ 
@@ -33,10 +34,11 @@ export const WelcomeMessage = () => (
  /----\\ | |_| | | | | |_| |_) | (_) | (_) | |  
 /------\\ \\___/|_| |_|\\__|_.__/ \\___/ \\___/|_|
 `}
-    </pre>
-    <div>Welcome to the interactive portfolio of Afroz Sheikh.</div>
-    <div className="mt-2">Type <span className="text-primary font-bold">`help`</span> to see the list of available commands.</div>
-    <div className="mt-1">Or, switch to the <span className="text-primary font-bold">`AI Chat`</span> to talk to my AI assistant.</div>
+      </pre>
+    </div>
+    <div className="font-bold text-lg mt-2 mb-1">Welcome to the portfolio of Afroz Sheikh</div>
+    <div>Type <span className="text-primary font-bold">`help`</span> to see the list of available commands.</div>
+    <div className="mt-1">Or, switch to the <span className="text-primary font-bold">`Assistant`</span> to talk to my AI assistant.</div>
   </OutputContainer>
 );
 
