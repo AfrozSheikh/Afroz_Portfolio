@@ -59,6 +59,7 @@ export default function Terminal({ history, setHistory, setTheme, setShowChat }:
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
+    inputRef.current?.focus();
   }, [history]);
 
   const processCommand = (command: string) => {
@@ -66,11 +67,13 @@ export default function Terminal({ history, setHistory, setTheme, setShowChat }:
         setHistory([{ id: 0, input: '', output: <WelcomeMessage /> }]);
         return;
     }
+    addCommandToHistory(command);
     const output = handleCommand({
       command,
       setHistory,
       setTheme,
       setShowChat,
+      onCommand: processCommand,
       data: { profile, skills, projects, experience, education, achievements, links },
     });
     setHistory(prev => [...prev, { id: prev.length, input: command, output }]);
@@ -80,7 +83,6 @@ export default function Terminal({ history, setHistory, setTheme, setShowChat }:
     if (e.key === 'Enter') {
       e.preventDefault();
       if(inputValue.trim()){
-        addCommandToHistory(inputValue);
         processCommand(inputValue);
       } else {
         setHistory(prev => [...prev, { id: prev.length, input: '', output: null }]);
@@ -109,7 +111,7 @@ export default function Terminal({ history, setHistory, setTheme, setShowChat }:
       <TerminalHeader />
       <div ref={terminalRef} className="flex-grow p-4 overflow-y-auto">
         <div className="flex flex-col space-y-4">
-          {history.map((item, index) => (
+          {history.map((item) => (
             <div key={item.id}>
               {item.input && (
                 <div className="flex text-base">

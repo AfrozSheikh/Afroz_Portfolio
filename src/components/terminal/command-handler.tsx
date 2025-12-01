@@ -31,6 +31,7 @@ interface CommandHandlerProps {
   setHistory: React.Dispatch<React.SetStateAction<HistoryItem[]>>;
   setTheme: (theme: string) => void;
   setShowChat: (show: boolean) => void;
+  onCommand: (cmd: string) => void;
   data: {
     profile: Profile;
     skills: Skill[];
@@ -62,12 +63,12 @@ const commandsList: { [key: string]: string } = {
 };
 
 
-export const handleCommand = ({ command, setHistory, setTheme, setShowChat, data }: CommandHandlerProps): React.ReactNode => {
+export const handleCommand = ({ command, setHistory, setTheme, setShowChat, onCommand, data }: CommandHandlerProps): React.ReactNode => {
   const [cmd, ...args] = command.toLowerCase().trim().split(' ');
 
   switch (cmd) {
     case 'help':
-      return <HelpMessage commands={commandsList} args={args} />;
+      return <HelpMessage commands={commandsList} args={args} onCommand={onCommand} />;
     
     case 'about':
     case 'bio':
@@ -83,7 +84,7 @@ export const handleCommand = ({ command, setHistory, setTheme, setShowChat, data
         const project = data.projects.find(p => p.slug === projectSlug);
         return project ? <ProjectDetailOutput project={project} /> : <div>Project &quot;{projectSlug}&quot; not found. Type `projects` to see all available projects.</div>;
       }
-      return <ProjectsOutput projects={data.projects} filter={args[0] as '--featured' | '--all' | undefined} />;
+      return <ProjectsOutput projects={data.projects} filter={args[0] as '--featured' | '--all' | undefined} onCommand={onCommand} />;
 
     case 'project':
         if(args[0]) {

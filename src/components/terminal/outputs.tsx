@@ -11,6 +11,7 @@ import {
 } from '@/lib/types';
 import { Badge } from '../ui/badge';
 import { ArrowRight, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const OutputContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="font-code text-sm leading-relaxed">{children}</div>
@@ -41,7 +42,7 @@ export const WelcomeMessage = () => (
   </OutputContainer>
 );
 
-export const HelpMessage = ({ commands, args }: { commands: { [key: string]: string }, args: string[] }) => {
+export const HelpMessage = ({ commands, args, onCommand }: { commands: { [key: string]: string }, args: string[], onCommand: (cmd: string) => void }) => {
     if (args[0] && commands[args[0]]) {
         return (
             <OutputContainer>
@@ -57,8 +58,14 @@ export const HelpMessage = ({ commands, args }: { commands: { [key: string]: str
       <Title>Available Commands</Title>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1">
         {Object.entries(commands).map(([command, description]) => (
-          <li key={command}>
-            <span className="text-primary font-bold w-24 inline-block">{command}</span>
+          <li key={command} className="flex items-center">
+            <Button
+                variant="link"
+                className="text-primary font-bold w-24 inline-block p-0 h-auto text-left justify-start"
+                onClick={() => onCommand(`help ${command}`)}
+            >
+                {command}
+            </Button>
             <span>{description}</span>
           </li>
         ))}
@@ -101,7 +108,7 @@ export const SkillsOutput = ({ skills }: { skills: Skill[] }) => (
   </OutputContainer>
 );
 
-export const ProjectsOutput = ({ projects, filter }: { projects: Project[], filter?: '--featured' | '--all' }) => {
+export const ProjectsOutput = ({ projects, filter, onCommand }: { projects: Project[], filter?: '--featured' | '--all', onCommand: (cmd: string) => void }) => {
     const projectsToShow = filter === '--featured' ? projects.filter(p => p.isFeatured) : projects;
 
     return (
@@ -111,8 +118,15 @@ export const ProjectsOutput = ({ projects, filter }: { projects: Project[], filt
             {projectsToShow.map(p => (
                 <div key={p.slug}>
                     <div className="flex items-baseline">
-                        <h3 className="font-bold text-foreground mr-2">{p.name} <span className='text-primary/70 text-xs'>({p.slug})</span></h3>
-                        {p.isFeatured && <Star className="h-3 w-3 text-yellow-400" />}
+                        <Button
+                            variant="link"
+                            className="text-foreground font-bold p-0 h-auto mr-2"
+                            onClick={() => onCommand(`project ${p.slug}`)}
+                        >
+                            {p.name}
+                        </Button>
+                         <span className='text-primary/70 text-xs'>({p.slug})</span>
+                        {p.isFeatured && <Star className="h-3 w-3 text-yellow-400 ml-2" />}
                     </div>
                     <p className="text-muted-foreground ml-1">{p.shortDescription}</p>
                     <div className="flex flex-wrap gap-2 mt-1 ml-1">
@@ -122,7 +136,7 @@ export const ProjectsOutput = ({ projects, filter }: { projects: Project[], filt
             ))}
             </div>
             <div className='text-muted-foreground mt-4'>
-                To see details, type <span className='text-primary'>`project &lt;slug&gt;`</span>.
+                To see details, type <span className='text-primary'>`project &lt;slug&gt;`</span> or click a project name.
             </div>
         </OutputContainer>
     );
