@@ -30,7 +30,7 @@ const TerminalHeader = () => (
 );
 
 const InputLine = ({ value, onChange, onKeyDown, inputRef }: any) => (
-  <div className="flex text-base w-full items-center">
+  <div className="flex text-base w-full items-center bg-input/70 p-2 rounded-md">
     <span className="text-primary font-bold mr-2">&gt;</span>
     <input
       ref={inputRef}
@@ -63,7 +63,13 @@ export default function Terminal({ history, setHistory, setTheme, setShowChat }:
   }, [history]);
   
   React.useEffect(() => {
-    inputRef.current?.focus();
+    const focusInput = () => inputRef.current?.focus();
+    focusInput();
+    // Re-focus on window focus
+    window.addEventListener('focus', focusInput);
+    return () => {
+        window.removeEventListener('focus', focusInput);
+    }
   }, []);
 
   const processCommand = (command: string) => {
