@@ -1,4 +1,4 @@
-# Afroz Sheikh's Interactive Terminal Portfolio
+# Afroz Sheikh's Terminal Based Portfolio
 
 Welcome to my interactive portfolio! This project is a unique and engaging way to explore my skills, projects, and experience through a simulated terminal interface and an AI-powered assistant.
 
